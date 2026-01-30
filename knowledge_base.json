@@ -1,0 +1,238 @@
+[
+  {
+    "id": "case_001",
+    "inputs": {
+      "salinity": "High",
+      "grade": "M40",
+      "priority": "Durability"
+    },
+    "formulation": {
+      "silane": 90,
+      "rha": 10
+    },
+    "outcome": 95,
+    "timestamp": "2023-10-01T10:00:00"
+  },
+  {
+    "id": "case_002",
+    "inputs": {
+      "salinity": "Low",
+      "grade": "M30",
+      "priority": "Cost"
+    },
+    "formulation": {
+      "silane": 40,
+      "rha": 60
+    },
+    "outcome": 88,
+    "timestamp": "2023-10-02T11:00:00"
+  },
+  {
+    "id": "case_003",
+    "inputs": {
+      "salinity": "Med",
+      "grade": "M30",
+      "priority": "Durability"
+    },
+    "formulation": {
+      "silane": 70,
+      "rha": 30
+    },
+    "outcome": 92,
+    "timestamp": "2023-10-03T09:30:00"
+  },
+  {
+    "id": "case_004",
+    "inputs": {
+      "salinity": "High",
+      "grade": "M50",
+      "priority": "Durability"
+    },
+    "formulation": {
+      "silane": 95,
+      "rha": 5
+    },
+    "outcome": 98,
+    "timestamp": "2023-10-04T14:00:00"
+  },
+  {
+    "id": "case_005",
+    "inputs": {
+      "salinity": "Low",
+      "grade": "M30",
+      "priority": "Cost"
+    },
+    "formulation": {
+      "silane": 30,
+      "rha": 70
+    },
+    "outcome": 85,
+    "timestamp": "2023-10-05T16:20:00"
+  },
+  {
+    "id": "case_006",
+    "inputs": {
+      "salinity": "High",
+      "grade": "M40",
+      "priority": "Durability"
+    },
+    "formulation": {
+      "rha": 10,
+      "silane": 90
+    },
+    "outcome": 50,
+    "feedback": "Verification Test Run",
+    "timestamp": "2026-01-29T14:48:27.462434"
+  },
+  {
+    "id": "case_007",
+    "inputs": {},
+    "formulation": {},
+    "outcome": 80,
+    "feedback": "User simulated field feedback",
+    "timestamp": "2026-01-29T14:50:54.427987"
+  },
+  {
+    "id": "case_008",
+    "inputs": {},
+    "formulation": {},
+    "outcome": 100,
+    "feedback": "User simulated field feedback",
+    "timestamp": "2026-01-29T14:51:13.003066"
+  },
+  {
+    "id": "case_009",
+    "inputs": {
+      "salinity": "Med",
+      "grade": "M40",
+      "priority": "Durability"
+    },
+    "formulation": {
+      "rha": 10,
+      "silane": 90
+    },
+    "outcome": 100,
+    "feedback": "User simulated field feedback",
+    "timestamp": "2026-01-29T14:52:17.547576"
+  },
+  {
+    "id": "case_010",
+    "inputs": {
+      "salinity": "Med",
+      "grade": "M40",
+      "priority": "Durability"
+    },
+    "formulation": {
+      "rha": 10,
+      "silane": 90
+    },
+    "outcome": 100,
+    "feedback": "User simulated field feedback",
+    "timestamp": "2026-01-29T14:52:24.034704"
+  },
+  {
+    "id": "case_011",
+    "inputs": {
+      "salinity": "Low",
+      "grade": "M30",
+      "priority": "Durability"
+    },
+    "formulation": {
+      "rha": 30,
+      "silane": 70
+    },
+    "outcome": 23,
+    "feedback": "User simulated field feedback",
+    "timestamp": "2026-01-29T14:55:48.398412"
+  },
+  {
+    "id": "case_012",
+    "inputs": {
+      "salinity": "Low",
+      "grade": "M30",
+      "priority": "Cost"
+    },
+    "formulation": {
+      "rha": 60,
+      "silane": 40
+    },
+    "outcome": 100,
+    "feedback": "User simulated field feedback",
+    "timestamp": "2026-01-29T15:02:55.523951"
+  },
+  {
+    "id": "case_013",
+    "inputs": {
+      "salinity": "High",
+      "grade": "M50",
+      "priority": "Cost"
+    },
+    "formulation": {
+      "rha": 5,
+      "silane": 95
+    },
+    "outcome": 100,
+    "feedback": "User simulated field feedback",
+    "timestamp": "2026-01-29T15:19:21.554932"
+  },
+  {
+    "id": "case_014",
+    "inputs": {
+      "salinity": "High",
+      "grade": "M50",
+      "priority": "Durability"
+    },
+    "formulation": {
+      "rha": 5,
+      "silane": 95
+    },
+    "outcome": 80,
+    "feedback": "User simulated field feedback",
+    "timestamp": "2026-01-29T15:36:57.888233"
+  },
+  {
+    "id": "case_015",
+    "inputs": {
+      "salinity": "High",
+      "grade": "M40",
+      "priority": "Durability"
+    },
+    "formulation": {
+      "rha": 10,
+      "silane": 90
+    },
+    "outcome": 50,
+    "feedback": "Verification Test Run",
+    "timestamp": "2026-01-30T21:32:27.716369"
+  },
+  {
+    "id": "case_016",
+    "inputs": {
+      "salinity": "High",
+      "grade": "M40",
+      "priority": "Durability"
+    },
+    "formulation": {
+      "rha": 10,
+      "silane": 90
+    },
+    "outcome": 50,
+    "feedback": "Verification Test Run",
+    "timestamp": "2026-01-30T21:32:46.815313"
+  },
+  {
+    "id": "case_017",
+    "inputs": {
+      "salinity": "High",
+      "grade": "M40",
+      "priority": "Durability"
+    },
+    "formulation": {
+      "rha": 10,
+      "silane": 90
+    },
+    "outcome": 50,
+    "feedback": "Verification Test Run",
+    "timestamp": "2026-01-30T21:42:19.736944"
+  }
+]

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaFort AI Engineering Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo-area">
+            <div class="logo">
+                AquaFort AI <span class="badge">PRO</span>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <button class="nav-btn active" data-tab="home">
+                <span>⚡</span> Recommendation
+            </button>
+            <button class="nav-btn" data-tab="analytics">
+                <span>📈</span> Analytics
+            </button>
+        </nav>
+
+        <div class="system-status">
+            <div class="status-dot"></div> System Active
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <div class="header-bar">
+            <h1 id="page-title">Mix Design Recommendation</h1>
+        </div>
+
+        <!-- DASHBOARD GRID: RECOMMENDATION TAB -->
+        <div id="tab-home" class="dashboard-grid tab-content">
+
+            <!-- INPUT PANEL -->
+            <section class="card">
+                <div class="card-header">
+                    <h2>Input Parameters</h2>
+                </div>
+
+                <!-- PHOTO UPLOAD -->
+                <div class="upload-area" id="cv-dropzone">
+                    <input type="file" id="site-image" accept="image/*" hidden>
+                    <span class="upload-icon">📷</span>
+                    <p><strong>Upload Site Photo</strong></p>
+                    <p style="font-size: 0.8rem; color: #64748b;">Auto-detect grade & environment</p>
+                </div>
+
+                <form id="recommendForm">
+                    <div class="form-group">
+                        <label>Environmental Salinity</label>
+                        <select id="salinity" name="salinity">
+                            <option value="Low">Low (Inland)</option>
+                            <option value="Med">Medium (Coastal)</option>
+                            <option value="High">High (Marine/Splash Zone)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Concrete Grade</label>
+                        <select id="grade" name="grade">
+                            <option value="M30">M30</option>
+                            <option value="M40">M40</option>
+                            <option value="M50">M50+</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Optimization Priority</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="p_cost" name="priority" value="Cost">
+                                <label for="p_cost">Cost</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="p_durability" name="priority" value="Durability" checked>
+                                <label for="p_durability">Durability</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Calculate Mix</button>
+                </form>
+            </section>
+
+            <!-- RESULTS PANEL -->
+            <section class="card">
+                <div class="card-header">
+                    <h2>Analysis Results</h2>
+                </div>
+
+                <div id="results-placeholder" style="text-align: center; color: #94a3b8; padding: 2rem;">
+                    <p>Awaiting inputs...</p>
+                </div>
+
+                <div id="results-container" class="hidden">
+                    <div class="result-box">
+                        <div class="result-header">
+                            <h3>Optimal Formulation</h3>
+                            <span class="score-badge">Score: <span id="val-score">--</span>/100</span>
+                        </div>
+
+                        <div class="composition-chart">
+                            <div id="bar-silane" class="bar-segment bg-primary" style="width: 50%">Silane</div>
+                            <div id="bar-rha" class="bar-segment bg-secondary" style="width: 50%">RHA</div>
+                        </div>
+
+                        <div class="stat-row">
+                            <span>Silane Content</span>
+                            <span id="val-silane">--%</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Nano-RHA Content</span>
+                            <span id="val-rha">--%</span>
+                        </div>
+                    </div>
+
+                    <div class="explanation">
+                        <strong>Engineering Logic:</strong><br>
+                        <span id="explanation-text">...</span>
+                        <div style="font-size: 0.8rem; color: #64748b; margin-top: 5px;">Reference Case ID: <span
+                                id="ref-case-id">--</span></div>
+                    </div>
+
+                    <div style="display: flex; gap: 10px;">
+                        <button id="showFeedbackBtn" class="btn-secondary">Log Field Feedback</button>
+                        <button id="downloadPdfBtn" class="btn-secondary">Export Report</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- DASHBOARD GRID: ANALYTICS TAB -->
+        <div id="tab-analytics" class="dashboard-grid tab-content hidden">
+            <section class="card" style="grid-column: 1 / -1;">
+                <div class="card-header">
+                    <h2>System Analytics</h2>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                    <div style="height: 300px;">
+                        <canvas id="chart-scatter"></canvas>
+                    </div>
+                    <div style="height: 300px;">
+                        <canvas id="chart-line"></canvas>
+                    </div>
+                </div>
+
+                <h3>Historical Data</h3>
+                <div class="table-scroll-container">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Case ID</th>
+                                <th>Date</th>
+                                <th>Inputs</th>
+                                <th>Score</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-table-body">
+                            <!-- JS Populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- FEEDBACK MODAL (Simple implementation) -->
+        <div id="feedback-panel" class="card hidden" style="margin-top: 2rem; border-color: var(--accent-primary);">
+            <div class="card-header">
+                <h2>Field Verification Feedback</h2>
+            </div>
+            <p style="margin-bottom: 1rem; color: var(--text-muted);">Updating the knowledge base with field observed
+                performance.</p>
+            <form id="feedbackForm">
+                <div class="form-group">
+                    <label>Observed Performance Score (0-100)</label>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <input type="range" id="f_score" min="0" max="100" value="80" style="flex:1"
+                            oninput="this.nextElementSibling.innerText = this.value">
+                        <span style="font-weight: 700; font-size: 1.2rem; color: var(--accent-primary);">80</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary" style="width: auto;">Submit Field Data</button>
+            </form>
+        </div>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
